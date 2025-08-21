@@ -31,3 +31,7 @@ teamai --help
 
 ## Licence
 GPL-3.0-or-later (viz soubor LICENSE)
+
+## Daily Workflow
+
+Run `python -m scripts.orchestrator`.

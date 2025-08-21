@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Implement greet API",
+    "owner": "dev"
+  },
+  {
+    "id": 2,
+    "title": "Write tests for greet API",
+    "owner": "qa"
+  },
+  {
+    "id": 3,
+    "title": "Update README",
+    "owner": "docs"
+  }
+]
