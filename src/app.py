@@ -1,16 +1,22 @@
-from __future__ import annotations
+from typing import Any
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+todos: list[str] = []
 
 
-def greet(name: str = "world") -> str:
-    return f"Hello, {name}!"
+@app.get("/todos")
+def get_todos():
+    return jsonify(todos)
 
 
-def main(argv: list[str] | None = None) -> int:
-    # Simple CLI behavior just to demonstrate tests
-    name = argv[1] if argv and len(argv) > 1 else "world"
-    print(greet(name))
-    return 0
+@app.post("/todos")
+def add_todo():
+    data: dict[str, Any] = (request.get_json(silent=True) or {})  # type: ignore[assignment]
+    task = str(data.get("task", ""))
+    todos.append(task)
+    return jsonify({"message": "Task added"}), 201
 
 
 if __name__ == "__main__":  # pragma: no cover
-    raise SystemExit(main())
+    app.run(debug=True)
