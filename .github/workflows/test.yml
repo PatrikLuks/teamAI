@@ -1,4 +1,4 @@
-name: Test Suite
+name: AI Team CI/CD
 on:
   push:
     branches: [ "main" ]
@@ -10,7 +10,8 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.11"
-      - run: pip install -e .
+      - run: pip install -r requirements.txt
+      - run: black src/ tests/
       - run: pytest
         env:
           PYTHONPATH: src
