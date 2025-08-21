@@ -12,7 +12,7 @@ def get_todos():
 
 @app.post("/todos")
 def add_todo():
-    data: dict[str, Any] = (request.get_json(silent=True) or {})  # type: ignore[assignment]
+    data: dict[str, Any] = request.get_json(silent=True) or {}  # type: ignore[assignment]
     task = str(data.get("task", ""))
     todos.append(task)
     return jsonify({"message": "Task added"}), 201
